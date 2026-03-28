@@ -15,8 +15,8 @@ app.add_middleware(
 )
 
 # 🔴 YAHAN APNI API DETAILS DALO
-API_URL = "https://api.blacklistalliance.com/check"
-API_KEY = "YOUR_API_KEY"
+API_URL = "https://api.blacklistalliance.net/lookup?key=nmngtEbbgaK8eR64H8Zt&ver=v3&resp=raw&phone=--A--phone_number--B--"
+API_KEY = "nmngtEbbgaK8eR64H8Zt"
 
 class PhoneRequest(BaseModel):
     phone: str
