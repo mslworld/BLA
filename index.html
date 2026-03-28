@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FDNC Checker</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 100px;">
+
+    <h2>FDNC Number Checker</h2>
+
+    <input type="text" id="phone" placeholder="Enter phone number" style="padding:10px; width:250px;">
+    <br><br>
+    <button onclick="checkNumber()" style="padding:10px 20px;">Check</button>
+
+    <h3 id="result" style="margin-top:20px;"></h3>
+
+    <script>
+        async function checkNumber() {
+            let phone = document.getElementById("phone").value;
+
+            document.getElementById("result").innerText = "Checking...";
+
+            try {
+                let res = await fetch("http://127.0.0.1:8000/check", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ phone: phone })
+                });
+
+                let data = await res.json();
+
+                if (data.success) {
+                    document.getElementById("result").innerText =
+                        "Result: " + JSON.stringify(data.result);
+                } else {
+                    document.getElementById("result").innerText =
+                        "Error: " + data.error;
+                }
+
+            } catch (err) {
+                document.getElementById("result").innerText =
+                    "Connection Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
