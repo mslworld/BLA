@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-# 🔴 APNI API KEY YAHAN DALO
+# 🔴 API KEY
 API_KEY = "nmngtEbbgaK8eR64H8Zt"
 
 st.set_page_config(page_title="FDNC Checker")
@@ -17,14 +17,17 @@ if st.button("Check"):
                 url = f"https://api.blacklistalliance.net/lookup?key={API_KEY}&ver=v3&resp=raw&phone={phone}"
 
                 response = requests.get(url)
-
-                # 🔴 TEXT response (important)
-                data = response.text
+                data = response.text.strip()   # 👈 important
 
                 st.success("Result Received")
 
-                # 👇 RAW RESULT
-                st.code(data)
+                # 🔥 RESULT LOGIC
+                if data == "1":
+                    st.error("❌ FDNC Number (Blocked)")
+                elif data == "0":
+                    st.success("✅ Clean Number (Allowed)")
+                else:
+                    st.warning(f"Unknown Response: {data}")
 
             except Exception as e:
                 st.error(f"Error: {e}")
