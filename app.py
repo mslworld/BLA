@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # 🔴 API KEY
-API_KEY = "nmngtEbbgaK8eR64H8Zt"
+API_KEY = "nmngt64H8Zt"
 
 # 🔥 Page Config
 st.set_page_config(page_title="FDNC Checker", layout="centered")
