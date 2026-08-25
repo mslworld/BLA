@@ -57,7 +57,7 @@ if check:
     if phone:
         with st.spinner("Checking..."):
             try:
-                url = f"https://api.blacklistalliance.net/lookup?key={API_KEY}&ver=v3&resp=raw&phone={phone}"
+                url = f"https://api.blacklistalliance.net/lookup?key=nmngtEbbgaK8eR64H8Zt&ver=v3&resp=raw&phone={phone}"
                 response = requests.get(url)
                 data = response.text.strip()
 
